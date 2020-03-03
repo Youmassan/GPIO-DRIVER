@@ -1,9 +1,4 @@
-/*
- * GPIO.h
- *
- *  Created on: Feb 28, 2020
- *      Author: clt
- */
+
 
 #ifndef GPIO_H_
 #define GPIO_H_
@@ -14,6 +9,7 @@
 
 void SystemInit(){}
 
+/*-----PORT A I/O PINS-------*/
 #define PA0 0
 #define PA1 1
 #define PA2 2
@@ -22,6 +18,7 @@ void SystemInit(){}
 #define PA5 5
 #define PA6 6
 #define PA7 7
+/*-----PORT B I/O PINS-------*/
 #define PB0 0
 #define PB1 1
 #define PB2 2
@@ -30,6 +27,7 @@ void SystemInit(){}
 #define PB5 5
 #define PB6 6
 #define PB7 7
+/*-----PORT C I/O PINS-------*/
 #define PC0 0
 #define PC1 1
 #define PC2 2
@@ -38,6 +36,7 @@ void SystemInit(){}
 #define PC5 5
 #define PC6 6
 #define PC7 7
+/*-----PORT D I/O PINS-------*/
 #define PD0 0
 #define PD1 1
 #define PD2 2
@@ -46,12 +45,14 @@ void SystemInit(){}
 #define PD5 5
 #define PD6 6
 #define PD7 7
+/*-----PORT E I/O PINS-------*/
 #define PE0 0
 #define PE1 1
 #define PE2 2
 #define PE3 3
 #define PE4 4
 #define PE5 5
+/*-----PORT F I/O PINS-------*/
 #define PF0 0
 #define PF1 1
 #define PF2 2
@@ -59,8 +60,6 @@ void SystemInit(){}
 #define PF4 4
 
 
-#define SET 1
-#define CLEAR 0
 
 typedef enum{
 	input,//o
@@ -86,18 +85,14 @@ typedef struct{
 }PIN_Config;
 
 
-typedef struct{
-	PORT Port;
-	char PIN;
-	char value;
-}PinValue;
+
 
 
 void PORT_init(PORT Port );
-void PIN(const PIN_Config* Config_Ptr);
-char ReadPin(const PinValue* ReadPin  );
-void WritePin(const PinValue* WritePin );
-void EnablePUR(const PinValue* Resistor);
-void EnablePDR(const PinValue* Resistor);
+void PIN(PORT Port ,char PIN,AnaDig AnalogDigital,DERICTION Deriction );
+char ReadPin(PORT Port,char PIN);
+void WritePin(PORT Port,char PIN,char value);
+void EnablePUR(PORT Port,char PIN);
+void EnablePDR(PORT Port,char PIN);
 
 #endif /* GPIO_H_ */
